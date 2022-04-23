@@ -54,6 +54,8 @@ setup(
     include_package_data=True,
     install_requires=[
         "importlib-metadata ; python_version<'3.8'",
+        "eth-ape>=0.2.1,<0.3.0",
+        "requests>=2.27.1,<3.0",
     ],  # NOTE: Add 3rd party libraries here
     python_requires=">=3.7,<4",
     extras_require=extras_require,
