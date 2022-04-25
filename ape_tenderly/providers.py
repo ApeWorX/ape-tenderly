@@ -1,6 +1,6 @@
 import os
 
-import requests
+import requests  # type: ignore
 from ape.api import ProviderAPI, Web3Provider
 from ape.utils import cached_property
 from web3 import HTTPProvider, Web3
