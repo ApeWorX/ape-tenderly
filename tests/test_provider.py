@@ -1,8 +1,3 @@
-def test_basic(accounts, networks):
-
-    with networks.tenderly.local.use_provider("test"):
-        a = accounts.test_accounts[0]
-        receipt = a.transfer(a, 100)
-
-        assert not receipt.failed
-        assert receipt.value == 100
+def test_reset_fork(mainnet_fork_provider):
+    assert mainnet_fork_provider.fork_id
+    assert mainnet_fork_provider.uri
