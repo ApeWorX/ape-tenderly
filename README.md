@@ -39,9 +39,3 @@ If you have an API service that automatically provisions tenderly forks, you can
 ```sh
 export TENDERLY_FORK_SERVICE_URI=...
 ```
-
-## Development
-
-This project is in development and should be considered a beta.
-Things might not be in their final state and breaking changes may occur.
-Comments, questions, criticisms and pull requests are welcomed.

@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import ape
 import pytest
 
 from ape_tenderly.providers import TenderlyProvider
@@ -7,23 +8,17 @@ from ape_tenderly.providers import TenderlyProvider
 
 @pytest.fixture
 def networks():
-    from ape import networks
-
-    return networks
+    return ape.networks
 
 
 @pytest.fixture
 def accounts():
-    from ape import accounts
-
-    return accounts
+    return ape.accounts
 
 
 @pytest.fixture
 def Contract():
-    from ape import Contract
-
-    return Contract
+    return ape.Contract
 
 
 @pytest.fixture
