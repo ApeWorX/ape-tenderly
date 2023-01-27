@@ -1,7 +1,8 @@
-import pytest
 import os
 
+import pytest
 from ape.exceptions import ConfigError
+
 from ape_tenderly.provider import TENDERLY_FORK_ID
 
 
@@ -12,9 +13,7 @@ def connected_eth_mainnet_provider(mainnet_fork_provider):
     Else, tests will not run.
     """
     if TENDERLY_FORK_ID not in os.environ:
-        pytest.fail(
-            f"{TENDERLY_FORK_ID} environment variable is required to run tests."
-        )
+        pytest.fail(f"{TENDERLY_FORK_ID} environment variable is required to run tests.")
 
     return mainnet_fork_provider
 

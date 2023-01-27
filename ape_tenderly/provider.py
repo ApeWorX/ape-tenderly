@@ -6,7 +6,6 @@ from ape.exceptions import ConfigError
 from ape.utils import cached_property
 from web3 import HTTPProvider, Web3
 
-
 TENDERLY_FORK_ID = "TENDERLY_FORK_ID"
 TENDERLY_FORK_SERVICE_URI = "TENDERLY_FORK_SERVICE_URI"
 
