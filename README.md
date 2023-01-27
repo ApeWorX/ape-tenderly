@@ -1,10 +1,10 @@
 # Quick Start
 
-Ecosystem Plugin for Tenderly support in Ape
+Ecosystem plugin for Tenderly support in Ape.
 
 ## Dependencies
 
-* [python3](https://www.python.org/downloads) version 3.8 or greater, python3-dev
+- [python3](https://www.python.org/downloads) version 3.8 or greater, python3-dev
 
 ## Installation
 
@@ -28,14 +28,16 @@ python3 setup.py install
 
 ## Quick Usage
 
-This plugin works as a normal provider for forked mainnet networks only (e.g. Ethereum, Fantom, etc.)
+This plugin works as a normal provider for forked mainnet networks only (e.g. Ethereum, Fantom, etc.).
 
 If you know your fork ID (from the Tenderly console) you can use that like this
+
 ```sh
 export TENDERLY_FORK_ID=...
 ```
 
 If you have an API service that automatically provisions tenderly forks, you can use it like this
+
 ```sh
 export TENDERLY_FORK_SERVICE_URI=...
 ```

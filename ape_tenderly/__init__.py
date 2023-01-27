@@ -1,6 +1,6 @@
 from ape import plugins
 
-from .providers import TenderlyProvider
+from .provider import TenderlyProvider
 
 
 @plugins.register(plugins.ProviderPlugin)
