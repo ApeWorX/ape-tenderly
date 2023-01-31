@@ -1,9 +1,5 @@
-from pathlib import Path
-
 import ape
 import pytest
-
-from ape_tenderly.providers import TenderlyProvider
 
 
 @pytest.fixture
@@ -22,15 +18,11 @@ def Contract():
 
 
 @pytest.fixture
-def mainnet_fork_provider(networks):
-    network_api = networks.ecosystems["ethereum"]["mainnet-fork"]
-    provider = TenderlyProvider(
-        name="tenderly",
-        network=network_api,
-        request_header={},
-        data_folder=Path("."),
-        provider_settings={},
-    )
-    provider.connect()
-    yield provider
-    provider.disconnect()
+def mainnet_fork(networks):
+    return networks.ethereum.mainnet_fork
+
+
+@pytest.fixture
+def mainnet_fork_provider(mainnet_fork):
+    with mainnet_fork.use_provider("tenderly") as provider:
+        yield provider
