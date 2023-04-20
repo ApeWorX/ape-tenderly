@@ -10,6 +10,7 @@ NETWORKS = {
     ],
 }
 
+
 @plugins.register(plugins.ProviderPlugin)
 def providers():
     for ecosystem_name in NETWORKS:

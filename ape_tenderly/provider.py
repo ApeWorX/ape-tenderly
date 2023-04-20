@@ -1,10 +1,10 @@
 import os
 
-from ape.api import Web3Provider, UpstreamProvider, TestProviderAPI
+from ape.api import UpstreamProvider, Web3Provider
 from ape.exceptions import ProviderError
 from web3 import HTTPProvider, Web3
-from web3.middleware import geth_poa_middleware
 from web3.gas_strategies.rpc import rpc_gas_price_strategy
+from web3.middleware import geth_poa_middleware
 
 
 class TenderlyGatewayProvider(Web3Provider, UpstreamProvider):
@@ -13,6 +13,7 @@ class TenderlyGatewayProvider(Web3Provider, UpstreamProvider):
 
     Docs: https://docs.tenderly.co/web3-gateway/web3-gateway
     """
+
     @property
     def uri(self) -> str:
         project_id = os.environ.get("TENDERLY_GATEWAY_ACCESS_KEY")
@@ -26,7 +27,7 @@ class TenderlyGatewayProvider(Web3Provider, UpstreamProvider):
 
     def connect(self):
         self._web3 = Web3(HTTPProvider(self.uri))
-        
+
         try:
             # Any chain that *began* as PoA needs the middleware for pre-merge blocks
             ethereum_goerli = 5
