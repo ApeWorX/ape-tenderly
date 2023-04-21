@@ -1,12 +1,16 @@
 from ape import plugins
 
-from .provider import TenderlyGatewayProvider
+from .provider import TenderlyForkProvider, TenderlyGatewayProvider
 
 NETWORKS = {
     "ethereum": [
-        "mainnet",
-        "goerli",
-        "sepolia",
+        ("mainnet", TenderlyGatewayProvider),
+        ("mainnet-fork", TenderlyForkProvider),
+        ("goerli", TenderlyGatewayProvider),
+        ("sepolia", TenderlyGatewayProvider),
+    ],
+    "fantom": [
+        ("opera-fork", TenderlyForkProvider),
     ],
 }
 
@@ -14,5 +18,5 @@ NETWORKS = {
 @plugins.register(plugins.ProviderPlugin)
 def providers():
     for ecosystem_name in NETWORKS:
-        for network_name in NETWORKS[ecosystem_name]:
-            yield ecosystem_name, network_name, TenderlyGatewayProvider
+        for network_name, provider in NETWORKS[ecosystem_name]:
+            yield ecosystem_name, network_name, provider
