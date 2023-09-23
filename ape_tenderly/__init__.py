@@ -1,6 +1,6 @@
 from ape import plugins
 
-from .provider import TenderlyForkProvider, TenderlyGatewayProvider
+from .provider import TenderlyConfig, TenderlyForkProvider, TenderlyGatewayProvider
 
 NETWORKS = {
     "ethereum": [
@@ -40,6 +40,11 @@ NETWORKS = {
         ("opera-fork", TenderlyForkProvider),
     ],
 }
+
+
+@plugins.register(plugins.Config)
+def config_class():
+    return TenderlyConfig
 
 
 @plugins.register(plugins.ProviderPlugin)
