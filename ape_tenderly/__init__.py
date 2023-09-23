@@ -7,7 +7,34 @@ NETWORKS = {
         ("mainnet", TenderlyGatewayProvider),
         ("mainnet-fork", TenderlyForkProvider),
         ("goerli", TenderlyGatewayProvider),
+        ("goerli-fork", TenderlyForkProvider),
         ("sepolia", TenderlyGatewayProvider),
+        ("sepolia-fork", TenderlyForkProvider),
+    ],
+    "polygon": [
+        ("mainnet", TenderlyGatewayProvider),
+        ("mainnet-fork", TenderlyForkProvider),
+        ("mumbai", TenderlyGatewayProvider),
+        ("mumbai-fork", TenderlyForkProvider),
+    ],
+    "arbitrum": [
+        ("mainnet-fork", TenderlyForkProvider),
+        ("goerli-fork", TenderlyForkProvider),
+    ],
+    "optimism": [
+        ("mainnet", TenderlyGatewayProvider),
+        ("mainnet-fork", TenderlyForkProvider),
+        ("goerli", TenderlyGatewayProvider),
+        ("goerli-fork", TenderlyForkProvider),
+    ],
+    "base": [
+        ("mainnet", TenderlyGatewayProvider),
+        ("mainnet-fork", TenderlyForkProvider),
+        ("goerli", TenderlyGatewayProvider),
+        ("goerli-fork", TenderlyForkProvider),
+    ],
+    "avalance": [
+        ("mainnet-fork", TenderlyForkProvider),
     ],
     "fantom": [
         ("opera-fork", TenderlyForkProvider),
