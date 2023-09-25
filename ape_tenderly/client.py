@@ -30,11 +30,14 @@ class TenderlyClientError(Exception):
 
 class TenderlyClient:
     @cached_property
-    def __access_key_header(self) -> Dict:
+    def _authenticated_session(self) -> requests.Session:
         if not (access_key := os.environ.get(TENDERLY_ACCESS_KEY)):
             raise ConfigError("No valid tenderly access key found.")
 
-        return {"X-Access-Key": access_key}
+        session = requests.Session()
+        session.headers.update({"X-Access-Key": access_key})
+
+        return session
 
     @cached_property
     def _api_uri(self) -> str:
@@ -44,10 +47,7 @@ class TenderlyClient:
         return f"https://api.tenderly.co/api/v2/project/{project_name}"
 
     def get_forks(self) -> List[Fork]:
-        response = requests.get(
-            f"{self._api_uri}/forks",
-            headers=self.__access_key_header,
-        )
+        response = self._authenticated_session.get(f"{self._api_uri}/forks")
 
         if not response.ok:
             raise TenderlyClientError(f"Error processing request: {response.text}")
@@ -59,14 +59,13 @@ class TenderlyClient:
             return []
 
     def create_fork(self, chain_id: int) -> Fork:
-        response = requests.post(
+        response = self._authenticated_session.post(
             f"{self._api_uri}/forks",
             json={
                 "name": f"ape-fork-{chain_id}",
                 "description": "Automatically created by Ape",
                 "network_id": str(chain_id),
             },
-            headers=self.__access_key_header,
         )
 
         if not response.ok:
@@ -75,10 +74,7 @@ class TenderlyClient:
         return parse_obj_as(Fork, response.json().get("fork"))
 
     def remove_fork(self, fork_id: str):
-        response = requests.delete(
-            f"{self._api_uri}/forks/{fork_id}",
-            headers=self.__access_key_header,
-        )
+        response = self._authenticated_session.delete(f"{self._api_uri}/forks/{fork_id}")
 
         if not response.ok:
             raise TenderlyClientError(f"Error processing request: {response.text}")
