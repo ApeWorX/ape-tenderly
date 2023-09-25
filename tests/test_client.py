@@ -44,7 +44,7 @@ def run_without_secret(secret_name):
 
 def test_missing_gateway_secret(client):
     with run_without_secret(TENDERLY_GATEWAY_ACCESS_KEY):
-        with pytest.raises(ConfigError):
+        with pytest.raises(ConfigError, match="No valid Tenderly Gateway Access Key found."):
             client.get_gateway_rpc_uri("doesnt", "matter")
 
 
