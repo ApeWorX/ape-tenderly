@@ -100,6 +100,6 @@ class TenderlyClient:
             network_subdomain = f"{ecosystem_name}-{network_name}"
 
         if not (project_id := os.environ.get(TENDERLY_GATEWAY_ACCESS_KEY)):
-            raise TenderlyClientError("No valid Tenderly Gateway Access Key found.")
+            raise ConfigError("No valid Tenderly Gateway Access Key found.")
 
         return f"https://{network_subdomain}.gateway.tenderly.co/{project_id}"
