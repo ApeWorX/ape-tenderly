@@ -95,17 +95,19 @@ class TenderlyGatewayProvider(Web3Provider, UpstreamProvider):
         self._web3 = Web3(HTTPProvider(self.uri))
 
         try:
-            # Any chain that *began* as PoA needs the middleware for pre-merge blocks
-            ethereum_goerli = 5
-            optimism = (10, 420)
-            polygon = (137, 80001)
-
-            if self._web3.eth.chain_id in (ethereum_goerli, *optimism, *polygon):
-                self._web3.middleware_onion.inject(geth_poa_middleware, layer=0)
-
-            self._web3.eth.set_gas_price_strategy(rpc_gas_price_strategy)
+            chain_id = self._web3.eth.chain_id
         except Exception as err:
             raise ProviderError(f"Failed to connect to Tenderly Gateway.\n{repr(err)}") from err
+
+        # Any chain that *began* as PoA needs the middleware for pre-merge blocks
+        ethereum_goerli = 5
+        optimism = (10, 420)
+        polygon = (137, 80001)
+
+        if chain_id in (ethereum_goerli, *optimism, *polygon):
+            self._web3.middleware_onion.inject(geth_poa_middleware, layer=0)
+
+        self._web3.eth.set_gas_price_strategy(rpc_gas_price_strategy)
 
     def disconnect(self):
         self._web3 = None
