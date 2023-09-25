@@ -55,7 +55,11 @@ class TenderlyClient:
             # ...and this will raise for anything else
             raise TenderlyClientError(f"Error processing request: {response.text}")
 
-        return parse_obj_as(List[Fork], response.json())
+        if forks := response.json():
+            return parse_obj_as(List[Fork], forks)
+
+        else:
+            return []
 
     def create_fork(self, chain_id: int) -> Fork:
         response = requests.post(
