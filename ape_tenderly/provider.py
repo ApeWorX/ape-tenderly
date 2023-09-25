@@ -46,11 +46,13 @@ class TenderlyForkProvider(Web3Provider):
 
     def disconnect(self):
         if self.config.auto_remove_forks:
+            fork_id = self.fork.id
+            logger.debug(f"Removing tenderly fork '{fork_id}'...")
+
             try:
-                fork_id = self.fork.id
-                logger.debug(f"Removing tenderly fork '{fork_id}'...")
                 self._client.remove_fork(fork_id)
                 logger.success(f"Removed tenderly fork '{fork_id}'.")
+
             except Exception as e:
                 logger.error(f"Couldn't remove tenderly fork '{fork_id}': {e}.")
 
