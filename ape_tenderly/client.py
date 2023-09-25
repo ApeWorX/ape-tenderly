@@ -50,9 +50,6 @@ class TenderlyClient:
         )
 
         if not response.ok:
-            # NOTE: This will raise on any HTTP errors
-            response.raise_for_status()
-            # ...and this will raise for anything else
             raise TenderlyClientError(f"Error processing request: {response.text}")
 
         if forks := response.json():
@@ -73,9 +70,6 @@ class TenderlyClient:
         )
 
         if not response.ok:
-            # NOTE: This will raise on any HTTP errors
-            response.raise_for_status()
-            # ...and this will raise for anything else
             raise TenderlyClientError(f"Error processing request: {response.text}")
 
         return parse_obj_as(Fork, response.json().get("fork"))
@@ -87,9 +81,6 @@ class TenderlyClient:
         )
 
         if not response.ok:
-            # NOTE: This will raise on any HTTP errors
-            response.raise_for_status()
-            # ...and this will raise for anything else
             raise TenderlyClientError(f"Error processing request: {response.text}")
 
     def get_gateway_rpc_uri(self, ecosystem_name: str, network_name: str) -> str:
