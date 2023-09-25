@@ -51,5 +51,7 @@ def test_missing_gateway_secret(client):
 def test_create_fork(client):
     assert len(client.get_forks()) == 0
     fork = client.create_fork(1)
-    assert fork in client.get_forks()
-    client.remove_fork(fork.id)
+    try:
+        assert fork in client.get_forks()
+    finally:
+        client.remove_fork(fork.id)
