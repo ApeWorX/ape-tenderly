@@ -6,7 +6,6 @@ from ape.exceptions import ConfigError
 from ape.utils import cached_property
 from pydantic import BaseModel, parse_obj_as
 
-TENDERLY_FORK_ID = "TENDERLY_FORK_ID"
 TENDERLY_PROJECT = "TENDERLY_PROJECT"
 TENDERLY_ACCESS_KEY = "TENDERLY_ACCESS_KEY"
 TENDERLY_GATEWAY_ACCESS_KEY = "TENDERLY_GATEWAY_ACCESS_KEY"
