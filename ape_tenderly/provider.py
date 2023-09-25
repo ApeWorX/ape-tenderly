@@ -38,7 +38,7 @@ class TenderlyForkProvider(Web3Provider):
 
     @property
     def uri(self) -> str:
-        return f"https://rpc.tenderly.co/fork/{self.fork.id}"
+        return self.fork.json_rpc_url
 
     def connect(self):
         self._web3 = Web3(HTTPProvider(self.uri))
