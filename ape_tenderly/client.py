@@ -89,8 +89,17 @@ class TenderlyClient:
             # ...and this will raise for anything else
             raise TenderlyClientError(f"Error processing request: {response.text}")
 
-    def get_gateway_rpc_uri(self, network_name: str) -> str:
+    def get_gateway_rpc_uri(self, ecosystem_name: str, network_name: str) -> str:
+        if ecosystem_name == "ethereum":
+            # e.g. Sepolia, Goerli, etc.
+            network_subdomain = network_name
+        elif network_name == "mainnet":
+            # e.g. Polygon mainnet, Optimism, etc.
+            network_subdomain = ecosystem_name
+        else:
+            network_subdomain = f"{ecosystem_name}-{network_name}"
+
         if not (project_id := os.environ.get(TENDERLY_GATEWAY_ACCESS_KEY)):
             raise TenderlyClientError("No valid Tenderly Gateway Access Key found.")
 
-        return f"https://{network_name}.gateway.tenderly.co/{project_id}"
+        return f"https://{network_subdomain}.gateway.tenderly.co/{project_id}"

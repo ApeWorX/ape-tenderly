@@ -73,19 +73,7 @@ class TenderlyGatewayProvider(Web3Provider, UpstreamProvider):
 
     @property
     def uri(self) -> str:
-        ecosystem_name = self.network.ecosystem.name
-        network_name = self.network.name
-
-        if ecosystem_name == "ethereum":
-            # e.g. Sepolia, Goerli, etc.
-            network_subdomain = network_name
-        elif network_name == "mainnet":
-            # e.g. Polygon mainnet, Optimism, etc.
-            network_subdomain = ecosystem_name
-        else:
-            network_subdomain = f"{ecosystem_name}-{network_name}"
-
-        return self._client.get_gateway_rpc_uri(network_subdomain)
+        return self._client.get_gateway_rpc_uri(self.network.ecosystem.name, self.network.name)
 
     @property
     def connection_str(self) -> str:
