@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 import requests
 from ape.exceptions import ConfigError
 from ape.utils import cached_property
-from pydantic import BaseModel, parse_obj_as
+from ethpm_types import BaseModel, parse_obj_as
 
 TENDERLY_PROJECT = "TENDERLY_PROJECT"
 TENDERLY_ACCESS_KEY = "TENDERLY_ACCESS_KEY"
