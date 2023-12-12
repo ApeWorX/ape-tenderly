@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 import requests
 from ape.exceptions import ConfigError
 from ape.utils import cached_property
-from ethpm_types import BaseModel, parse_obj_as
+from eth_pydantic_types import BaseModel
 
 TENDERLY_PROJECT = "TENDERLY_PROJECT"
 TENDERLY_ACCESS_KEY = "TENDERLY_ACCESS_KEY"
@@ -53,7 +53,7 @@ class TenderlyClient:
             raise TenderlyClientError(f"Error processing request: {response.text}")
 
         if forks := response.json():
-            return parse_obj_as(List[Fork], forks)
+            return Fork.model_validate(forks)
 
         else:
             return []
@@ -71,7 +71,7 @@ class TenderlyClient:
         if not response.ok:
             raise TenderlyClientError(f"Error processing request: {response.text}")
 
-        return parse_obj_as(Fork, response.json().get("fork"))
+        return Fork.model_validate_json(response.json().get("fork"))
 
     def remove_fork(self, fork_id: str):
         response = self._authenticated_session.delete(f"{self._api_uri}/forks/{fork_id}")

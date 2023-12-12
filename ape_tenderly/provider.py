@@ -1,9 +1,10 @@
 import atexit
 
-from ape.api import PluginConfig, UpstreamProvider, Web3Provider
+from ape.api import PluginConfig, UpstreamProvider
 from ape.exceptions import ProviderError
 from ape.logging import logger
 from ape.utils import cached_property
+from ape_ethereum.provider import Web3Provider
 from web3 import HTTPProvider, Web3
 from web3.gas_strategies.rpc import rpc_gas_price_strategy
 from web3.middleware import geth_poa_middleware
