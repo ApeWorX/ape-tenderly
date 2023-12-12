@@ -53,7 +53,7 @@ class TenderlyClient:
             raise TenderlyClientError(f"Error processing request: {response.text}")
 
         if forks := response.json():
-            return Fork.model_validate(forks)
+            return [Fork.model_validate_json(x) for x in forks]
 
         else:
             return []
