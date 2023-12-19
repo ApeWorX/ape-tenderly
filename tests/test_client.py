@@ -48,6 +48,7 @@ def test_missing_gateway_secret(client):
             client.get_gateway_rpc_uri("doesnt", "matter")
 
 
+@pytest.mark.skip(reason="Requires a subscription to Tenderly's premium service.")
 def test_create_fork(client):
     assert len(client.get_forks()) == 0
     fork = client.create_fork(1)
