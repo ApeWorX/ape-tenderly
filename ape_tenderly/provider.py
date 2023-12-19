@@ -10,15 +10,13 @@ from web3.gas_strategies.rpc import rpc_gas_price_strategy
 from web3.middleware import geth_poa_middleware
 from typing import List, Optional, cast
 
-from ape.types import (
-    AddressType,
-)
-
-from ape.exceptions import (
-    VirtualMachineError,
-)
+from ape.api import PluginConfig, ReceiptAPI, TestProviderAPI, TransactionAPI, UpstreamProvider
+from ape.exceptions import ProviderError, VirtualMachineError
+from ape.logging import logger
+from ape.types import AddressType
 from ape.utils import cached_property
-from ethpm_types import HexBytes
+from ape_ethereum.provider import Web3Provider
+from eth_pydantic_types import HexBytes
 from web3 import HTTPProvider, Web3
 from web3.gas_strategies.rpc import rpc_gas_price_strategy
 from web3.middleware import geth_poa_middleware
@@ -32,8 +30,6 @@ class TenderlyConfig(PluginConfig):
 
     host: Optional[str] = None
     """The host address """
-
-
 
 
 class TenderlyForkProvider(Web3Provider):
@@ -130,6 +126,7 @@ class TenderlyDevnetProvider(Web3Provider, TestProviderAPI):
 
     Docs: https://docs.tenderly.co/devnets/intro-to-devnets
     """
+
     _host: Optional[str] = None
 
     @cached_property
@@ -145,7 +142,7 @@ class TenderlyDevnetProvider(Web3Provider, TestProviderAPI):
             self._host = config_host
 
         else:
-            raise ProviderError(f"Host not provided")
+            raise ProviderError("Host not provided.")
 
         return self._host
 

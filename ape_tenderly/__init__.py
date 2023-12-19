@@ -1,6 +1,11 @@
 from ape import plugins
 
-from .provider import TenderlyConfig, TenderlyForkProvider, TenderlyGatewayProvider, TenderlyDevnetProvider
+from .provider import (
+    TenderlyConfig,
+    TenderlyDevnetProvider,
+    TenderlyForkProvider,
+    TenderlyGatewayProvider,
+)
 
 NETWORKS = {
     "ethereum": [
