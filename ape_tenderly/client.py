@@ -81,7 +81,7 @@ class TenderlyClient:
 
     def get_gateway_rpc_uri(self, ecosystem_name: str, network_name: str) -> str:
         if ecosystem_name == "ethereum":
-            # e.g. Sepolia, Goerli, etc.
+            # e.g. Sepolia, etc.
             network_subdomain = network_name
         elif network_name == "mainnet":
             # e.g. Polygon mainnet, Optimism, etc.

@@ -6,8 +6,6 @@ NETWORKS = {
     "ethereum": [
         ("mainnet", TenderlyGatewayProvider),
         ("mainnet-fork", TenderlyForkProvider),
-        ("goerli", TenderlyGatewayProvider),
-        ("goerli-fork", TenderlyForkProvider),
         ("sepolia", TenderlyGatewayProvider),
         ("sepolia-fork", TenderlyForkProvider),
     ],
@@ -19,19 +17,19 @@ NETWORKS = {
     ],
     "arbitrum": [
         ("mainnet-fork", TenderlyForkProvider),
-        ("goerli-fork", TenderlyForkProvider),
+        ("sepolia-fork", TenderlyForkProvider),
     ],
     "optimism": [
         ("mainnet", TenderlyGatewayProvider),
         ("mainnet-fork", TenderlyForkProvider),
-        ("goerli", TenderlyGatewayProvider),
-        ("goerli-fork", TenderlyForkProvider),
+        ("sepolia", TenderlyGatewayProvider),
+        ("sepolia-fork", TenderlyForkProvider),
     ],
     "base": [
         ("mainnet", TenderlyGatewayProvider),
         ("mainnet-fork", TenderlyForkProvider),
-        ("goerli", TenderlyGatewayProvider),
-        ("goerli-fork", TenderlyForkProvider),
+        ("sepolia", TenderlyGatewayProvider),
+        ("sepolia-fork", TenderlyForkProvider),
     ],
     "avalance": [
         ("mainnet-fork", TenderlyForkProvider),
