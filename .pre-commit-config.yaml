@@ -1,6 +1,10 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
+<<<<<<< HEAD
     rev: v4.6.0
+=======
+    rev: v5.0.0
+>>>>>>> 3721525 (feat: support web3.py dependencies (#16))
     hooks:
     -   id: check-yaml
 
@@ -10,24 +14,36 @@ repos:
       - id: isort
 
 -   repo: https://github.com/psf/black
+<<<<<<< HEAD
     rev: 24.4.2
+=======
+    rev: 24.10.0
+>>>>>>> 3721525 (feat: support web3.py dependencies (#16))
     hooks:
       - id: black
         name: black
 
 -   repo: https://github.com/pycqa/flake8
+<<<<<<< HEAD
     rev: 7.0.0
+=======
+    rev: 7.1.1
+>>>>>>> 3721525 (feat: support web3.py dependencies (#16))
     hooks:
     -   id: flake8
 
 -   repo: https://github.com/pre-commit/mirrors-mypy
+<<<<<<< HEAD
     rev: v1.10.0
+=======
+    rev: v1.13.0
+>>>>>>> 3721525 (feat: support web3.py dependencies (#16))
     hooks:
     -   id: mypy
         additional_dependencies: [types-requests, types-setuptools, pydantic]
 
 -   repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.17
+    rev: 0.7.19
     hooks:
     -   id: mdformat
         additional_dependencies: [mdformat-gfm, mdformat-frontmatter]

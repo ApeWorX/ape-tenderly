@@ -12,8 +12,8 @@ NETWORKS = {
     "polygon": [
         ("mainnet", TenderlyGatewayProvider),
         ("mainnet-fork", TenderlyForkProvider),
-        ("mumbai", TenderlyGatewayProvider),
-        ("mumbai-fork", TenderlyForkProvider),
+        ("amoy", TenderlyGatewayProvider),
+        ("amoy-fork", TenderlyForkProvider),
     ],
     "arbitrum": [
         ("mainnet-fork", TenderlyForkProvider),
@@ -31,7 +31,7 @@ NETWORKS = {
         ("sepolia", TenderlyGatewayProvider),
         ("sepolia-fork", TenderlyForkProvider),
     ],
-    "avalance": [
+    "avalanche": [
         ("mainnet-fork", TenderlyForkProvider),
     ],
     "fantom": [

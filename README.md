@@ -4,7 +4,11 @@ Ecosystem plugin for Tenderly support in Ape.
 
 ## Dependencies
 
+<<<<<<< HEAD
 - [python3](https://www.python.org/downloads) version 3.8 up to 3.12.
+=======
+- [python3](https://www.python.org/downloads) version 3.9 up to 3.13.
+>>>>>>> 3721525 (feat: support web3.py dependencies (#16))
 
 ## Installation
 
