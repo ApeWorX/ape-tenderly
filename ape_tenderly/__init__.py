@@ -31,7 +31,7 @@ NETWORKS = {
         ("sepolia", TenderlyGatewayProvider),
         ("sepolia-fork", TenderlyForkProvider),
     ],
-    "avalance": [
+    "avalanche": [
         ("mainnet-fork", TenderlyForkProvider),
     ],
     "fantom": [
