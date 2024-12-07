@@ -105,3 +105,41 @@ class TenderlyGatewayProvider(Web3Provider, UpstreamProvider):
 
     def disconnect(self):
         self._web3 = None
+
+
+NETWORKS = {
+    "ethereum": [
+        ("mainnet", TenderlyGatewayProvider),
+        ("mainnet-fork", TenderlyForkProvider),
+        ("sepolia", TenderlyGatewayProvider),
+        ("sepolia-fork", TenderlyForkProvider),
+    ],
+    "polygon": [
+        ("mainnet", TenderlyGatewayProvider),
+        ("mainnet-fork", TenderlyForkProvider),
+        ("amoy", TenderlyGatewayProvider),
+        ("amoy-fork", TenderlyForkProvider),
+    ],
+    "arbitrum": [
+        ("mainnet-fork", TenderlyForkProvider),
+        ("sepolia-fork", TenderlyForkProvider),
+    ],
+    "optimism": [
+        ("mainnet", TenderlyGatewayProvider),
+        ("mainnet-fork", TenderlyForkProvider),
+        ("sepolia", TenderlyGatewayProvider),
+        ("sepolia-fork", TenderlyForkProvider),
+    ],
+    "base": [
+        ("mainnet", TenderlyGatewayProvider),
+        ("mainnet-fork", TenderlyForkProvider),
+        ("sepolia", TenderlyGatewayProvider),
+        ("sepolia-fork", TenderlyForkProvider),
+    ],
+    "avalanche": [
+        ("mainnet-fork", TenderlyForkProvider),
+    ],
+    "fantom": [
+        ("opera-fork", TenderlyForkProvider),
+    ],
+}
