@@ -23,23 +23,22 @@ def __getattr__(name: str):
 
         return NETWORKS
 
-    elif name == "TenderlyConfig":
+    if name == "TenderlyConfig":
         from ape_tenderly.provider import TenderlyConfig
 
         return TenderlyConfig
 
-    elif name == "TenderlyForkProvider":
+    if name == "TenderlyForkProvider":
         from ape_tenderly.provider import TenderlyForkProvider
 
         return TenderlyForkProvider
 
-    elif name == "TenderlyGatewayProvider":
+    if name == "TenderlyGatewayProvider":
         from ape_tenderly.provider import TenderlyGatewayProvider
 
         return TenderlyGatewayProvider
 
-    else:
-        raise AttributeError(name)
+    raise AttributeError(name)
 
 
 __all__ = [
