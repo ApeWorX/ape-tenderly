@@ -113,7 +113,7 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "version.py" = ["ALL"]
 "__init__.py" = ["F401"]
-"tests/**/*.py" = ["ARG001", "ARG002"]  # Pytest fixtures may appear unused
+"tests/**/*.py" = ["ARG001", "ARG002", "SIM117"]  # Pytest fixtures may appear unused
 
 [tool.ruff.lint.isort]
 force-wrap-aliases = true
