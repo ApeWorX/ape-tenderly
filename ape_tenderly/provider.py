@@ -1,4 +1,5 @@
 import atexit
+from typing import TYPE_CHECKING
 
 from ape.api import PluginConfig, UpstreamProvider
 from ape.exceptions import ProviderError
@@ -8,12 +9,13 @@ from ape_ethereum.provider import Web3Provider
 from web3 import HTTPProvider, Web3
 from web3.gas_strategies.rpc import rpc_gas_price_strategy
 
-try:
-    from web3.middleware import ExtraDataToPOAMiddleware  # type: ignore
-except ImportError:
-    from web3.middleware import (
-        geth_poa_middleware as ExtraDataToPOAMiddleware,  # type: ignore  # noqa: N812
-    )
+if TYPE_CHECKING:
+    from web3.middleware import ExtraDataToPOAMiddleware
+else:
+    try:
+        from web3.middleware import ExtraDataToPOAMiddleware
+    except ImportError:  # pragma: no cover
+        from web3.middleware import geth_poa_middleware as ExtraDataToPOAMiddleware  # noqa: N812
 
 from .client import Fork, TenderlyClient
 
