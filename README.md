@@ -4,7 +4,7 @@ Ecosystem plugin for Tenderly support in Ape.
 
 ## Dependencies
 
-- [python3](https://www.python.org/downloads) version 3.9 up to 3.13.
+- [Python 3](https://www.python.org/downloads) version 3.10 or greater.
 
 ## Installation
 
@@ -16,14 +16,15 @@ You can install the latest release via [`pip`](https://pypi.org/project/pip/):
 pip install ape-tenderly
 ```
 
-### via `setuptools`
+### via source
 
-You can clone the repository and use [`setuptools`](https://github.com/pypa/setuptools) for the most up-to-date version:
+You can clone the repository and install for development:
 
 ```bash
 git clone https://github.com/ApeWorX/ape-tenderly.git
 cd ape-tenderly
-python3 setup.py install
+uv sync --group dev
+uv run prek install
 ```
 
 ## Quick Usage

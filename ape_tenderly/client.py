@@ -1,5 +1,5 @@
 import os
-from typing import Any, Dict, List
+from typing import Any
 
 import requests
 from ape.exceptions import ConfigError
@@ -12,7 +12,7 @@ TENDERLY_GATEWAY_ACCESS_KEY = "TENDERLY_GATEWAY_ACCESS_KEY"
 
 
 class ForkDetails(BaseModel):
-    chain_config: Dict[str, Any] = {}
+    chain_config: dict[str, Any] = {}
 
 
 class Fork(BaseModel):
@@ -21,7 +21,7 @@ class Fork(BaseModel):
     block_number: int
     details: ForkDetails
     json_rpc_url: str
-    config: Dict[str, Any] = {}
+    config: dict[str, Any] = {}
 
 
 class TenderlyClientError(Exception):
@@ -46,7 +46,7 @@ class TenderlyClient:
 
         return f"https://api.tenderly.co/api/v2/project/{project_name}"
 
-    def get_forks(self) -> List[Fork]:
+    def get_forks(self) -> list[Fork]:
         response = self._authenticated_session.get(f"{self._api_uri}/forks")
 
         if not response.ok:
@@ -55,8 +55,7 @@ class TenderlyClient:
         if forks := response.json():
             return [Fork.model_validate_json(x) for x in forks]
 
-        else:
-            return []
+        return []
 
     def create_fork(self, chain_id: int) -> Fork:
         response = self._authenticated_session.post(

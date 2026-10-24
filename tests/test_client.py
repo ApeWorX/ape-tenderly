@@ -15,7 +15,7 @@ def client():
 
 
 @pytest.mark.parametrize(
-    "ecosystem_name,network_name",
+    ("ecosystem_name", "network_name"),
     [
         (ecosystem_name, network_name)
         for ecosystem_name in NETWORKS
